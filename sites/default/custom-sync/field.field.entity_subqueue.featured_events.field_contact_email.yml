@@ -1,0 +1,28 @@
+uuid: 3f5e9bd6-077b-4458-b2da-8d1eee524bdd
+langcode: en
+status: true
+dependencies:
+  config:
+    - entityqueue.entity_queue.featured_events
+    - field.storage.entity_subqueue.field_contact_email
+    - node.type.events
+id: entity_subqueue.featured_events.field_contact_email
+field_name: field_contact_email
+entity_type: entity_subqueue
+bundle: featured_events
+label: 'contact email'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      events: events
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

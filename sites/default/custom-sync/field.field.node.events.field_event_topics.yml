@@ -1,0 +1,35 @@
+uuid: b8eac922-6afc-47cc-9e1f-7b3ff9242ca5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_event_topics
+    - node.type.events
+    - taxonomy.vocabulary.event_topics
+  content:
+    - 'taxonomy_term:event_topics:892d7ff9-6c6f-478c-9923-ffa447c1479e'
+    - 'taxonomy_term:event_topics:b324289b-dfc0-4016-967e-ed250d55c1bb'
+id: node.events.field_event_topics
+field_name: field_event_topics
+entity_type: node
+bundle: events
+label: 'Event topics'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    target_uuid: b324289b-dfc0-4016-967e-ed250d55c1bb
+  -
+    target_uuid: 892d7ff9-6c6f-478c-9923-ffa447c1479e
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      event_topics: event_topics
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

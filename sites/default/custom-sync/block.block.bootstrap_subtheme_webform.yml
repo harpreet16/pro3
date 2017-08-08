@@ -1,0 +1,22 @@
+uuid: e5e315ea-7dbb-40fc-9e01-0bddee699628
+langcode: en
+status: true
+dependencies:
+  module:
+    - webform
+  theme:
+    - bootstrap_subtheme
+id: bootstrap_subtheme_webform
+theme: bootstrap_subtheme
+region: sidebar_first
+weight: -10
+provider: null
+plugin: webform_block
+settings:
+  id: webform_block
+  label: 'Contact Us'
+  provider: webform
+  label_display: visible
+  webform_id: contact
+  default_data: ''
+visibility: {  }

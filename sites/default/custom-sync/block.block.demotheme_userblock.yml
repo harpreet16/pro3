@@ -1,0 +1,26 @@
+uuid: 06d5d864-e98d-4945-ab34-a5af20e6e2fb
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+    - user_node
+  theme:
+    - demotheme
+id: demotheme_userblock
+theme: demotheme
+region: content
+weight: -8
+provider: null
+plugin: user_block
+settings:
+  id: user_block
+  label: 'User block'
+  provider: user_node
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: /user/register
+    negate: false
+    context_mapping: {  }

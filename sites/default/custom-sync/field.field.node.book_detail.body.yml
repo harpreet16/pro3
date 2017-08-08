@@ -1,0 +1,24 @@
+uuid: 6b825930-36c9-4a31-9375-5b74f4712672
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.book_detail
+  module:
+    - text
+_core:
+  default_config_hash: 7jjNrqabw5UhzWcHCkrRLWr_ztetjNoNE58Hep_qRS0
+id: node.book_detail.body
+field_name: body
+entity_type: node
+bundle: book_detail
+label: 'Book Detail'
+description: 'More specific information about the book.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+field_type: text_with_summary

@@ -1,0 +1,23 @@
+uuid: 8805efa8-8b4c-4cf8-8876-fe863e8bf35f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_link
+    - node.type.new_user
+  module:
+    - link
+id: node.new_user.field_link
+field_name: field_link
+entity_type: node
+bundle: new_user
+label: link
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

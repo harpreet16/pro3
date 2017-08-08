@@ -1,0 +1,33 @@
+uuid: 8a4d4931-dd5b-4638-a4f4-7a9e901a6726
+langcode: en
+status: true
+dependencies:
+  module:
+    - ctools
+  theme:
+    - demotheme
+id: primaryadminactions
+theme: demotheme
+region: headline
+weight: -4
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  provider: core
+  label_display: '0'
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      article: article
+      book_detail: book_detail
+      events: events
+      new_user: new_user
+      page: page
+      user_groups: user_groups
+      webform: webform
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

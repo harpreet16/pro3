@@ -1,0 +1,28 @@
+uuid: 9bfb25ef-1452-46c7-bcc0-9791cddee889
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.book_detail.body
+    - node.type.book_detail
+  module:
+    - text
+    - user
+_core:
+  default_config_hash: aPEn0JCpbHqIZ9A0dOmv7bNiGOo6VOV_wphdCHDXRG0
+id: node.book_detail.default
+targetEntityType: node
+bundle: book_detail
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden: {  }

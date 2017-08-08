@@ -1,0 +1,39 @@
+uuid: 75e1227f-2bb6-4682-9c41-5baa4c20d1b5
+langcode: en
+status: true
+dependencies:
+  config:
+    - entityqueue.entity_queue.featured_events
+    - field.field.entity_subqueue.featured_events.field_contact_email
+id: entity_subqueue.featured_events.default
+targetEntityType: entity_subqueue
+bundle: featured_events
+mode: default
+content:
+  field_contact_email:
+    weight: 6
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  items:
+    type: entity_reference_autocomplete
+    weight: 5
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    region: content
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: -10
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

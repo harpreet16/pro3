@@ -1,0 +1,19 @@
+uuid: 3c372815-9a49-4d43-b309-910d15baea00
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_name
+    - node.type.new_user
+id: node.new_user.field_name
+field_name: field_name
+entity_type: node
+bundle: new_user
+label: name
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

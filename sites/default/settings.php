@@ -774,6 +774,6 @@ $databases['default']['default'] = array (
   'driver' => 'mysql',
 );
 $settings['install_profile'] = 'standard';
-$config_directories['sync'] = 'sites/default/files/config_iW1q9NqRJBXe_zoFHjf_cDDWyPhTBze6axl5ycHptMJaEI4RDExvY2gtZxgVjeUpRHBNCBN7aw/sync';
+$config_directories['sync'] = 'sites/default/custom-sync';
  ini_set('memory_limit', '-1');
  $settings['twig_debug'] = TRUE;

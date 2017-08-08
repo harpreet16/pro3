@@ -1,0 +1,28 @@
+uuid: 849dc88d-ea3d-4ddc-acd1-d88e04c587e1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_user_profile
+    - node.type.new_user
+id: node.new_user.field_user_profile
+field_name: field_user_profile
+entity_type: node
+bundle: new_user
+label: 'user profile'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    include_anonymous: true
+    filter:
+      type: _none
+    target_bundles: null
+    sort:
+      field: _none
+    auto_create: false
+field_type: entity_reference

@@ -1,0 +1,25 @@
+uuid: 64fbb7ce-11d1-4a0c-b247-80af29af730f
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:0a5d2ab0-acc8-4387-83dc-91aff6551e02'
+  module:
+    - block_content
+  theme:
+    - bootstrap_subtheme
+id: default_demo_block
+theme: bootstrap_subtheme
+region: content
+weight: -11
+provider: block_content
+plugin: 'block_content:0a5d2ab0-acc8-4387-83dc-91aff6551e02'
+settings:
+  id: 'block_content:0a5d2ab0-acc8-4387-83dc-91aff6551e02'
+  label: 'Demo Block'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

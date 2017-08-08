@@ -1,0 +1,20 @@
+uuid: 90b5b2ee-6eae-4bbe-b48d-2c5e2f8a5236
+langcode: en
+status: true
+dependencies: {  }
+name: desaturatedevent_logo
+label: desaturatedevent_logo
+effects:
+  15839cf8-8ddd-4e1e-908a-c0e6dbab5b02:
+    uuid: 15839cf8-8ddd-4e1e-908a-c0e6dbab5b02
+    id: image_desaturate
+    weight: 1
+    data: {  }
+  bda7e260-2631-4984-b834-f703bf85366d:
+    uuid: bda7e260-2631-4984-b834-f703bf85366d
+    id: image_scale
+    weight: 2
+    data:
+      width: 150
+      height: 150
+      upscale: false

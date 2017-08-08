@@ -1,0 +1,39 @@
+uuid: b7f2aeda-0b10-4798-bf6a-d7fff78f4c41
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.associated_users
+  module:
+    - ctools
+    - views
+  theme:
+    - demotheme
+id: views_block__associated_users_block_1_2
+theme: demotheme
+region: footer
+weight: 0
+provider: null
+plugin: 'views_block:associated_users-block_1'
+settings:
+  id: 'views_block:associated_users-block_1'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+  context_mapping: {  }
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      article: article
+      book_detail: book_detail
+      events: events
+      new_user: new_user
+      page: page
+      user_groups: user_groups
+      webform: webform
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
