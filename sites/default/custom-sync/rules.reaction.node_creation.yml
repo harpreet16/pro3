@@ -1,0 +1,45 @@
+uuid: 2c9a4eb7-fbce-4918-a718-1c19f4c8cd82
+langcode: en
+status: true
+dependencies: {  }
+id: node_creation
+label: 'node creation'
+events:
+  -
+    event_name: 'rules_entity_insert:node'
+description: ''
+tags:
+  - ''
+config_version: '3'
+expression:
+  id: rules_rule
+  uuid: ab287da5-182a-4bd8-bcf4-e6ce97b4e942
+  conditions:
+    id: rules_and
+    uuid: e3685613-f03a-4be1-8029-60b4d2c482ba
+    conditions: {  }
+  actions:
+    id: rules_action_set
+    uuid: 04bcfedd-d10f-4f2e-83c9-a7291f8cc245
+    actions:
+      -
+        id: rules_action
+        uuid: 309345c9-8e81-4003-8081-6b78331cda8b
+        context_values:
+          subject: hi
+          message: 'node created'
+          reply: ''
+          language: ''
+        context_mapping:
+          to: node
+        context_processors:
+          subject:
+            rules_tokens: {  }
+          message:
+            rules_tokens: {  }
+          reply:
+            rules_tokens: {  }
+          language:
+            rules_tokens: {  }
+        provides_mapping: {  }
+        action_id: rules_send_email

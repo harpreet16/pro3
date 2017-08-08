@@ -1,0 +1,20 @@
+uuid: 55d8bab3-7168-4cfb-a698-bc827ce967f2
+langcode: en
+status: true
+dependencies:
+  config:
+    - entityqueue.entity_queue.featured_events
+    - field.field.entity_subqueue.featured_events.field_contact_email
+id: entity_subqueue.featured_events.default
+targetEntityType: entity_subqueue
+bundle: featured_events
+mode: default
+content:
+  field_contact_email:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: entity_reference_entity_id
+    region: content
+hidden: {  }

@@ -1,0 +1,35 @@
+uuid: 2b5d8efd-3a0c-4ee1-978f-68b644c6b4a8
+langcode: en
+status: true
+dependencies: {  }
+id: node__del_redirect
+label: 'node _del redirect'
+events:
+  -
+    event_name: 'rules_entity_delete:node'
+description: ''
+tags:
+  - ''
+config_version: '3'
+expression:
+  id: rules_rule
+  uuid: 2c47a57b-d344-4c07-b1ef-776b61aba77a
+  conditions:
+    id: rules_and
+    uuid: 82592abc-1ad8-4ffe-8bec-f9084cba96d4
+    conditions: {  }
+  actions:
+    id: rules_action_set
+    uuid: 05f16796-e982-48e0-b238-559dbfec6f92
+    actions:
+      -
+        id: rules_action
+        uuid: 0582343c-7cf5-4cdf-84e7-f31e46df908c
+        context_values:
+          url: 'http://pro3.com'
+        context_mapping: {  }
+        context_processors:
+          url:
+            rules_tokens: {  }
+        provides_mapping: {  }
+        action_id: rules_page_redirect

@@ -1,0 +1,25 @@
+uuid: e4ea6a17-24b4-47c8-8f79-1692829f7fda
+langcode: en
+status: false
+dependencies:
+  content:
+    - 'block_content:basic:f2e084ee-48d7-4cb4-9d88-2d6f6bcd5792'
+  module:
+    - block_content
+  theme:
+    - bootstrap_subtheme
+id: hello_2
+theme: bootstrap_subtheme
+region: block
+weight: -10
+provider: null
+plugin: 'block_content:f2e084ee-48d7-4cb4-9d88-2d6f6bcd5792'
+settings:
+  id: 'block_content:f2e084ee-48d7-4cb4-9d88-2d6f6bcd5792'
+  label: Hello!!!
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

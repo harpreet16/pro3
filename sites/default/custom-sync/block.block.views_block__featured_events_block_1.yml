@@ -1,0 +1,24 @@
+uuid: 5c8e4793-69ff-4937-b7ef-8e5134d82a5d
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.featured_events
+  module:
+    - views
+  theme:
+    - bootstrap_subtheme
+id: views_block__featured_events_block_1
+theme: bootstrap_subtheme
+region: sidebar_second
+weight: 0
+provider: null
+plugin: 'views_block:featured_events-block_1'
+settings:
+  id: 'views_block:featured_events-block_1'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility: {  }

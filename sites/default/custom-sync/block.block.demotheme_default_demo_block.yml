@@ -1,0 +1,25 @@
+uuid: 936f8636-59a3-497e-bdf5-da877cf0f434
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:0a5d2ab0-acc8-4387-83dc-91aff6551e02'
+  module:
+    - block_content
+  theme:
+    - demotheme
+id: demotheme_default_demo_block
+theme: demotheme
+region: content
+weight: -10
+provider: block_content
+plugin: 'block_content:0a5d2ab0-acc8-4387-83dc-91aff6551e02'
+settings:
+  id: 'block_content:0a5d2ab0-acc8-4387-83dc-91aff6551e02'
+  label: 'Demo Block'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

@@ -1,0 +1,17 @@
+uuid: c50496fe-4768-493a-81cd-fef921568167
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Events
+type: events
+description: 'This is where we  track all the events of drupalville'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

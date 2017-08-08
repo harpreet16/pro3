@@ -1,0 +1,18 @@
+uuid: d7faf079-e714-468f-93f3-9e1ab18da905
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.new_user
+id: node.new_user.title
+field_name: title
+entity_type: node
+bundle: new_user
+label: 'New User'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

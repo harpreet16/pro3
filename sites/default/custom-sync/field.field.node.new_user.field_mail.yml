@@ -1,0 +1,19 @@
+uuid: 40f0a14b-d139-4b54-bfc2-dfb8a604eafd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_mail
+    - node.type.new_user
+id: node.new_user.field_mail
+field_name: field_mail
+entity_type: node
+bundle: new_user
+label: mail
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

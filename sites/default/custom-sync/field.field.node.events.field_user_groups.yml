@@ -1,0 +1,36 @@
+uuid: 23fc9fd5-916c-4e90-beb7-32752c861284
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_user_groups
+    - node.type.events
+  content:
+    - 'user:user:9289dabc-f231-4eec-bb08-9226ad98fd02'
+    - 'user:user:fb7e1e0f-071d-4810-ab52-c6660db29a82'
+id: node.events.field_user_groups
+field_name: field_user_groups
+entity_type: node
+bundle: events
+label: 'user groups'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    target_uuid: fb7e1e0f-071d-4810-ab52-c6660db29a82
+  -
+    target_uuid: 9289dabc-f231-4eec-bb08-9226ad98fd02
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    include_anonymous: true
+    filter:
+      type: _none
+    target_bundles: null
+    sort:
+      field: name
+      direction: ASC
+    auto_create: false
+field_type: entity_reference
