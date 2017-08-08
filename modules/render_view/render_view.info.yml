@@ -1,0 +1,6 @@
+name: User Restrict Module
+description: An experimental module that renders view
+package: Custom
+type: module
+version: 1.0
+core: 8.x

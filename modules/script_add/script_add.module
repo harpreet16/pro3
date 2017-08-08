@@ -1,0 +1,71 @@
+<?php
+// use Drupal\Core\Template\Attribute;
+// $myConfig = \Drupal::config('example.settings'); // at the top of the method
+        
+//         // Somewhere later in the method
+//         $url = $myConfig->get('url');
+//         // echo $url;echo"<br>";
+//         $script= $myConfig->get('script');
+        // echo $script;echo "<br>";
+        // echo "hello";
+
+
+
+// function bootstrap_subtheme_html_head_alter(&$head_elements) {
+// 	echo "hello";
+// 	// foreach ($head_elements as $key => $element) {
+//  //    if (isset($element['#attributes']['rel']) && $element['#attributes']['rel'] == 'canonical') {
+//  //      // I want a custom canonical URL.
+//  //      $head_elements[$key]['#attributes']['href'] = mymodule_canonical_url();
+//  //    }
+//  //  } 
+// }
+// function bootstrap_subtheme_preprocess_page(&$vars, $hook) {
+//     drupal_set_html_head('<script type="text/javascript" src="http://use.typekit.com/12345.js">bmnn,</script>');
+//     $vars['head'] .= drupal_get_html_head();
+// }
+// function script_add_page_attachments(&$page) {
+//   /**
+//    * Initial JS.
+//    */
+//   echo "bye";
+
+//   $page['#attached']['html_head'][] = [
+//     // The data.
+//     [
+//       // Add a <script> tag.
+//       '#tag' => 'script',
+//       // Add JavaScript to the <script> tag.
+//       '#value' => \Drupal\Core\Render\Markup::create($script),
+//       // Give weight so it appears after meta tags, etc.
+//       '#weight' => -1,
+//     ],
+//     // A key, to make it possible to recognize this HTML <HEAD> element when altering.
+//     'key'
+//   ];
+
+
+// }
+
+
+function script_add_page_attachments_alter(array &$attachments) {
+	$page = \Drupal::request()->getRequestUri();
+  // kint($page);
+	$myConfig = \Drupal::config('example.settings'); // at the top of the method
+        
+        
+        $url = $myConfig->get('url');
+        $script= $myConfig->get('script');
+	if('pro3.com'.$page==$url){
+   $attachments['#attached']['html_head'][][] = array(
+       '#tag' => 'script',
+      // Add JavaScript to the <script> tag.
+      '#value' => \Drupal\Core\Render\Markup::create($script),
+      // Give weight so it appears after meta tags, etc.
+      '#weight' => 10,
+      );
+
+   // dpm($attachments);
+}
+}
+?>

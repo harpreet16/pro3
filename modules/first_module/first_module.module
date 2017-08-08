@@ -1,0 +1,23 @@
+<?php
+/**
+ * Theme hook
+ */
+function first_module_theme($existing, $type, $theme, $path) {
+  return array('my_block' =>
+    array(
+      'variables' => array(
+        'title' => 'Default title', 
+        'description' => 'Default description'
+      ),
+      // 'template' => 'block--sampleblock'
+    )
+  );
+}
+function first_module_uninstall(){
+	\Drupal::service('config.factory')->getEditable('example.settings')->delete();
+}
+
+
+
+?>
+

@@ -1,0 +1,29 @@
+<?php
+/**
+ * Theme hook
+ */
+function render_theme($existing, $type, $theme, $path) { 
+	// dpm($path);
+	$c=drupal_get_path('theme','bootstrap_subtheme');
+	// dpm($c);
+	return array( 
+		'mytheme' => array( 'path' => drupal_get_path('theme','bootstrap_subtheme').'/templates', 
+		'template' => 'mytheme', 
+		),
+	); 
+	
+	// echo($c);
+	// echo "hi";
+}
+function render_theme_suggestions_node_alter(array &$suggestions, array $variables) {
+
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+   
+   $content_type = $node->bundle();
+    // dpm($node->title->value);
+    if($node->title->value=="Haero Neo")
+    $suggestions[] = 'mytheme';
+     // dpm($suggestions);
+  }
+}
+?>

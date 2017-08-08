@@ -1,0 +1,32 @@
+<?php
+use Drupal\block\Entity\Block; 
+use Drupal\block_content\Entity\BlockContent; /** * Implements hook_install(). */ 
+function default_block_install() 
+{ // Add Demo block.
+ $block_content = BlockContent::create([ 
+ 	'type' => 'basic', 
+ 	'info' => 'Demo Block', 
+ 	]);
+ $block_content->set('body', 'This is demo block for drupal 8');
+ $block_content->save();
+ $block = Block::create([
+ 	    'id' => 'default_demo_block', 
+ 	    'plugin' => 'block_content:' . $block_content->uuid(), 
+ 	    'region' => 'content',
+ 	    'provider' => 'block_content',
+ 	    'weight' => -100,
+ 	    'theme' => \Drupal::config('system.theme')->get('default'),
+ 	    'visibility' =>array(),
+ 	    // 'visibility' => array(
+ 	    // 'request_path' => array(
+ 	    //     		'id' => 'request_path' ,
+ 	    //     		 'pages' => '/demopage'
+ 	    //     		 )), 
+ 	    'settings' => [ 
+	 	    'label' => 'Demo Block',
+	 	    'label_display' => 'visible',
+ 	         ],
+ 	     ]);
+ $block->save();
+}
+?>

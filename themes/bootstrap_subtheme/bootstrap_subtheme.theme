@@ -1,0 +1,80 @@
+<?php
+/**
+ * @file
+ * Bootstrap sub-theme.
+ *
+ * Place your custom PHP code in this file.
+ */
+function bootstrap_subtheme_theme_suggestions_node_alter(array &$suggestions, array $variables) {
+
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+   $variables['abc'] = '<p>This is Working</p>';
+   // kint($variables);
+   $content_type = $node->bundle();
+    // dpm($node->title->value);
+    if($node->title->value=="Haero Neo")
+    $suggestions[] = 'node__mytheme';
+     // dpm($suggestions);
+  }
+}
+/**
+ * Implements hook_preprocess_html().
+ */
+function bootstrap_subtheme_preprocess_html(&$variables) {
+   // $variables['abc'] = 'hello';
+	// kint($variables);
+  if ($node = \Drupal::request()->attributes->get('node')) {
+  	// dsm($node->nid);
+    $variables['attributes']['class'][] = 'page-node-' . $node->title->value;
+  }
+   // $nodes = \Drupal::routeMatch()->getParameter('node');
+   // dsm($nodes->nid);
+}
+
+/**
+ * working off of this:
+ * drupal.stackexchange.com/questions/186246/how-to-print-core-block-or-views-block-in-node-html-twig-drupal-8
+ */
+function bootstrap_subtheme_preprocess_node(&$variables) {
+
+    # this creates a variable named 'similar_by_terms' that i can use in the twig template files.
+    # this is the machine name shown at 'admin/structure/views'
+   // kint($variables);
+    $variables['similar_by_terms'] = views_embed_view('events');
+    // Getting the node creation time stamp from the node object.
+    $date = $variables['node']->getCreatedTime();
+    // Here you can use drupal's format_date() function, or some custom PHP date formatting.
+    $variables['dates'] = date('m-d-Y',$date);
+      
+  //   this creates a variable named 'my_books' that i can use in the twig template files.
+  //   this works, from:
+  //   drupal.stackexchange.com/questions/195916/render-a-custom-block-programmatically/195917#195917
+  //   block_num needs to be right. block_name doesn't seem to matter.
+  //   $block_entity = Drupal\block_content\Entity\BlockContent::load(26);
+  //   $block_view = \Drupal::entityTypeManager()->getViewBuilder('block_content')->view($block_entity, 'foo bar');
+  //   if ($block_view) {
+  //       $variables['my_books'] = $block_view;
+  //   }
+  //    $node = \Drupal::routeMatch()->getParameter('node');
+  //   if ($node) { // check we have a node object.
+  //   if ($node->nid == 61) { // look for a specific node id.
+  //     //attach the library.
+  //     $variables['#attached']['library'][] = 'bootstrap_subtheme/styling';
+  //   }
+  // }
+
+    
+}
+function bootstrap_subtheme_preprocess_page(&$variables) {
+  // kint($variables);
+           $node = \Drupal::routeMatch()->getParameter('node');
+    if ($node) { // check we have a node object.
+    if ($node->id() == 61) { // look for a specific node id.
+      //attach the library.
+      $variables['#attached']['library'][] = 'bootstrap_subtheme/styling';
+      // kint($variables);
+    }
+  }
+}
+
+

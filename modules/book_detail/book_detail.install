@@ -1,0 +1,70 @@
+<?php
+function book_detail_install() {
+  $database = \Drupal::database();
+  // drupal_install_schema('book_detail');
+  }
+
+function book_detail_schema() {
+  $schema['book_detail'] = array(
+    'description' => 'Stores example person entries for demonstration purposes.',
+    'fields' => array(
+      'pid' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'description' => 'Primary Key: Unique person ID.',
+      ),
+      'uid' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => "Creator user's {users}.uid",
+      ),
+      'title' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Name of the book.',
+      ),
+      'body' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Content of the book.',
+      ),
+     
+     
+    ),
+  );
+
+  return $schema;
+}
+function book_detail_update_8300() {
+  $fields = array(
+    'field_name_1' => array(
+      'description' => 'Field name 1',
+      'type' => 'varchar',
+      'length' => '32',
+      'not null' => FALSE,
+      'default' => '',
+    ),    
+    'field_name_3' => array(
+      'description' => 'Field name 3',
+      'type' => 'varchar',
+      'length' => '128',
+      'not null' => FALSE,
+      'default' => '',
+    ),
+  );
+
+  foreach ($fields as $key => $field)  {
+    if (!db_field_exists('book_detail', $key)) {
+      db_add_field('book_detail', $key, $field);
+    }
+  }
+}
+function book_detail_uninstall(){
+ 
+}
+?>

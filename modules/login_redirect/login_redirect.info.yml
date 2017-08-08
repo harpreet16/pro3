@@ -1,0 +1,6 @@
+name: Login Redirect Module
+description: An experimental module to redirect after login
+package: Custom
+type: module
+version: 1.0
+core: 8.x

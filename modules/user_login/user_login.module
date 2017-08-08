@@ -1,0 +1,37 @@
+<?php
+use \Drupal\node\Entity\Node;
+use \Drupal\node\NodeInterface;
+
+function user_login_user_insert($account) {
+	$node = Node::create([
+
+       'type' => 'new_user',
+
+       'title' => 'Your Details',
+
+       'field_mail'=>$account->mail,
+
+       'field_name' =>$account->uid,
+
+       'field_profile_pic'=> $account->user_picture,
+
+       'field_link' => 'http://pro3.com/user/'.$account->id().'/edit',
+
+       'field_user_profile'=> 'default',
+
+       'field_description'=>'This is your details',
+
+
+]);  
+	drupal_register_shutdown_function('user_login_node_update', $node,$account); 
+}
+function user_login_node_update($node,$account) {
+
+
+   $node->set('field_user_profile', $account);
+   $node->save(); 
+    // kint($account);
+
+}
+
+?>

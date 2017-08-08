@@ -1,0 +1,44 @@
+<?php
+
+// use Drupal\Core\Form\FormStateInterface;
+
+// global $user;
+/**
+* Implements hook_form_alter() on behalf of modify_user.module.
+*/
+// dsm($user->uid);
+
+function user_node_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  // dsm($form);
+// dsm($form_id);
+   // Change form id here
+
+if ($form_id == 'user_register_form') {
+  if (\Drupal::currentUser()->isAnonymous()) {
+     $current_time = date('G');
+     // dsm($current_time);
+      if ($current_time >= 9 && $current_time <= 10) {
+         // drupal_set_message("Form ID  : " . $form_id." is disabled");
+          $form['#access']= FALSE;
+      }
+  }
+}
+// user_node_theme();
+}
+
+$time = date('G');
+if ($time >= 9 && $time <= 10) {
+// dsm($time);
+function user_node_theme($existing, $type, $theme, $path) {
+  
+  return array('my_userblock' =>
+    array(
+      'variables' => array(
+        'title' => 'Default title', 
+        'description' => 'Default description'
+      ),
+      // 'template' => 'block--sampleblock'
+    )
+  );
+}
+}

@@ -1,0 +1,7 @@
+user_restrict.user:
+  path: '/render/view'
+  defaults:
+    _controller: '\Drupal\render_view\Controller\AlbumController::albumSongList'
+    _title: 'User Restrict'
+  requirements:
+    _permission: 'access content'

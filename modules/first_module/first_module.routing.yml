@@ -1,0 +1,16 @@
+first_module.content:
+  path: '/first'
+  defaults:
+    _controller: 'Drupal\first_module\Controller\FirstController::content'
+    _title: 'Hello world'
+  requirements:
+    _permission: 'access content'
+
+first_module.form:
+ path: '/myform'
+ defaults:
+   _title: 'Application form'
+   _form: '\Drupal\first_module\Form\ResumeForm'
+ requirements:
+    _permission: 'administer site configuration'
+

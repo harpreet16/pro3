@@ -1,0 +1,88 @@
+<?php
+
+// use Drupal\Core\Form\FormStateInterface;
+
+global $user;
+/**
+* Implements hook_form_alter() on behalf of modify_user.module.
+*/
+// dsm($user->uid);
+
+function form_module_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  // dsm($form);
+// dsm($form_id);
+   // Change form id here
+
+
+if ($form_id == 'webform_submission_test_form_node_61_form') {
+
+
+if (\Drupal::currentUser()->isAnonymous()) {
+
+      $form['elements']['password']['#disabled']= TRUE;
+      $form['elements']['password']['#title']="Key";
+      $form['elements']['password']['#value']="mykey";
+      // $form['elements']['name']['#value']="mykey";
+}
+else{
+  
+      // $form['elements']['contact']['#disabled'] = TRUE;
+      $form['elements']['contact']['#type'] = "hidden";
+      // dpm($form['#validate']);
+      $form['#validate'][3] = 'form_module_formValidate';
+      // array_splice($form['actions']['submit']['#submit'], 0, 0,array('form_module_submission_presave'));
+
+      // $form['actions']['submit']['#submit'][] = 'form_module_submission_presave';
+}
+$form['actions']['submit']['#ajax'] = array(
+        'callback' => 'form_module_ajax',
+        'wrapper' => 'webform-submission-test-form-node-61-form',
+        'method' => 'replace',
+        'effect' =>'fade',
+        );
+// kint($form);
+}
+}
+
+function form_module_ajax(&$form, \Drupal\Core\Form\FormStateInterface $form_state){
+ $confirmation = array(
+'#type' => 'markup',
+'#markup' => t('You have successfully submitted this form'),
+);
+return $confirmation;
+}
+
+
+function form_module_formValidate(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id){
+    $cname = $form['elements']['email']['#value'];
+    $form_state->setValue('email','myname@gmail.com');
+  
+     if ($cname == 'BBIT@gmail.com') {
+       $form_state->setErrorByName('email', t('Not allowed'));
+       
+     }
+   }
+
+function form_module_submission_presave(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+  // drupal_set_message("The form is being submitted, do some extra stuff now...");
+  // // $form_state['rebuild'] = TRUE;
+  // // $form_state = new FormState();
+  //  //$form_state->setRebuild();
+ 
+  // // $form_state->setRebuild();
+  // $c=$form_state->getValue('email');
+  // print_r($c);
+  // // $c['first']="myname";
+   
+  // $form_state->setValue('email','myname@gmail.com');
+  
+  // $form_state['rebuild'] = TRUE;
+  if ($entity = $form_state->getFormObject()->getEntity()) {
+    dpm($entity);
+    $entity->set('email','myname@gmail.com');
+    $entity->save();
+  }
+}
+
+

@@ -1,0 +1,6 @@
+name: Render Module
+description: An experimental module to apply custom theme
+package: Custom
+type: module
+version: 1.0
+core: 8.x
