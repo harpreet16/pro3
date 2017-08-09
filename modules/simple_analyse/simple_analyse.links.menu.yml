@@ -1,0 +1,5 @@
+simple_analyse.settings:
+  title: Simple analyse Settings
+  description: 'Simple analyse configurations- my custom form to add js'
+  parent: system.admin_config_development
+  route_name: first_module.form

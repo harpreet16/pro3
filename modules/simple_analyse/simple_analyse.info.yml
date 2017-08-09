@@ -1,0 +1,8 @@
+name: Analysis Module
+description: An experimental module to build our analysis module for settings
+package: Custom
+type: module
+version: 1.0
+core: 8.x
+configure: simple_analyse.settings
+hidden: false

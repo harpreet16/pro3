@@ -1,0 +1,12 @@
+<?php
+function render_view_block_view_alter(array &$build, \Drupal\Core\Block\BlockPluginInterface $block) {
+  if ($block->getBaseId() === 'system_powered_by_block') {
+    $build['#pre_render'][] = 'render_view_block_poweredby_prerender';
+  }
+}
+
+function render_view_block_poweredby_prerender(array $build) {
+    $build['content']['#markup'] = 'Your text';
+    return $build;
+}
+?>
