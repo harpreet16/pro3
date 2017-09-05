@@ -1,10 +1,10 @@
 <?php
 // use Drupal\Core\Template\Attribute;
-// $myConfig = \Drupal::config('example.settings'); // at the top of the method
+// $myConfig = \Drupal::config('my_sheet_int_form.settings'); // at the top of the method
         
 //         // Somewhere later in the method
-//         $url = $myConfig->get('url');
-//         // echo $url;echo"<br>";
+//         $url = $myConfig->get('sheet_id');
+//         echo $url;echo"<br>";
 //         $script= $myConfig->get('script');
         // echo $script;echo "<br>";
         // echo "hello";

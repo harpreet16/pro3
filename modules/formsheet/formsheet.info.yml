@@ -1,0 +1,11 @@
+name: Form Integration with google sheets Module
+description: An experimental module to Integrate drupal forms with google storage
+package: Custom
+type: module
+version: 1.0
+core: 8.x
+dependencies:
+  - libraries
+library_dependencies:
+  - google-api-php-client-2.2.0
+

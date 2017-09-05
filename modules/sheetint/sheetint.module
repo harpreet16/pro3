@@ -1,0 +1,240 @@
+
+<?php
+use Symfony\Component\HttpFoundation\RedirectResponse;
+function sheetint_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  //dpm($form_id);
+  
+if ($form_id == 'sheet_int_form') {
+  require_once __DIR__ . '/vendor/autoload.php';
+
+
+  define('APPLICATION_NAME', 'Google Sheets API PHP Quickstart');
+  define('CREDENTIALS_PATH', $_SERVER['DOCUMENT_ROOT'].'/sites/default/files/sheets.googleapis.com-php-formint.json');
+  define('CLIENT_SECRET_PATH', __DIR__ . '/client_secret.json');
+        // If modifying these scopes, delete your previously saved credentials
+        // at ~/.credentials/sheets.googleapis.com-php-quickstart.json
+  define('SCOPES', implode(' ', array(
+          Google_Service_Sheets::SPREADSHEETS)
+        ));
+   // dpm();
+  // dpm(CREDENTIALS_PATH);
+    
+          /**
+           * Returns an authorized API client.
+           * @return Google_Client the authorized client object
+           */
+    function getClient() {
+      $client = new Google_Client();
+      $client->setApplicationName(APPLICATION_NAME);
+      $client->setScopes(SCOPES);
+      $client->setAuthConfig(CLIENT_SECRET_PATH);
+      $client->setAccessType('offline');
+      $client->setApprovalPrompt('force');
+      // Load previously authorized credentials from a file.
+      $credentialsPath = CREDENTIALS_PATH;
+      if (file_exists($credentialsPath)) 
+      {
+        $accessToken = json_decode(file_get_contents($credentialsPath), true);
+      } 
+      else 
+      {
+        // Request authorization from the user.
+        $authUrl = $client->createAuthUrl();
+        // kint($authUrl);
+          if(get1('code')){
+            $authCode=get1('code');
+           }
+          else{
+           $response= new RedirectResponse($authUrl);
+           $response->send();
+           return;
+           }
+          $authCode=get1('code');
+          // print_r($authCode);
+          // Exchange authorization code for an access token.
+          $accessToken = $client->fetchAccessTokenWithAuthCode($authCode);
+          if(!file_exists(dirname($credentialsPath))) 
+          {
+            mkdir(dirname($credentialsPath), 0700, true);
+          }
+          file_put_contents($credentialsPath, json_encode($accessToken));
+          printf("Credentials saved to %s\n", $credentialsPath);
+            // echo "<br>";
+            // print_r($accessToken);
+          $config = \Drupal::service('config.factory')->getEditable('sheet_int_form.settings');
+
+        // Set and save new message value.
+          $config->set('code', $authCode)->save();
+
+          $myconfig = \Drupal::config('sheet_int_form.settings');
+        // Will print 'Hello'.
+          // print_r($myconfig->get('code'));
+      }
+      $client->setAccessToken($accessToken);
+
+          // Store the refresh token credentials to disk.
+          // if(!file_exists(dirname($credentialsPath))) {
+          //   mkdir(dirname($credentialsPath), 0700, true);
+          // }
+          //file_put_contents($credentialsPath, json_encode($accessToken));
+          // printf("Credentials saved to %s\n", $credentialsPath);
+
+      return $client;
+    }
+      // Get the API client and construct the service object.
+      $client = getClient();
+      $client = getClient();
+      $a=serialize($client);
+      $form['client']['#value']=$a;
+      $form['#submit'][]  = 'sheetint_form_submit';
+}
+//specify the form_id of your form
+else{
+  // dpm($form_id);
+ $sql1="SELECT * from sheetint";
+  $result1=db_query($sql1);
+  while($data1 = $result1->fetchObject()){
+    $forms[]=$data1->cid;
+  }
+  // print_r($forms);
+foreach($forms as $key=>$value){
+
+if($form_id == $value){
+
+ // kint($form);
+  require_once __DIR__ . '/vendor/autoload.php';
+
+  $sql="SELECT * from sheetint where cid='".$form_id."'";
+  $result=db_query($sql);
+  while($data = $result->fetchObject()){
+    $array=$data->client;
+    // print_r($array);echo "<br>";
+    $c=unserialize($array);
+    // print_r($c);
+  }
+
+  $form['cd']=$c;
+          // $form_state->set('cd',$c);
+
+  $form['actions']['submit']['#submit'][] = 'sheetint_form_submit_handler';
+          // kint($form_state);
+  }
+  }
+  }
+}
+
+function sheetint_form_submit(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+
+  $myConfig = \Drupal::config('sheet_int_form.settings'); 
+  $c=$form_state->getValue('client');
+
+  $sid = $myConfig->get('sheet_id');
+  $cid = $myConfig->get('cid');
+  $sql="SELECT * from sheetint where cid='".$cid."'";
+  $result=db_query($sql);
+  $result->allowRowCount = TRUE;
+  if ($result->rowCount() == 0){
+   db_insert('sheetint')
+      ->fields(array(
+        'sheet_id' => $sid,
+        'cid' => $cid,
+        'client' =>$c,   
+      ))->execute();
+  }
+}
+
+
+
+function sheetint_form_submit_handler(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id){
+  require_once __DIR__ . '/vendor/autoload.php';
+ 
+  $c=$form_state->getCompleteForm();
+  $form_to_link=$c['#form_id'];
+ // kint($form_state);
+
+ // kint($form_state->getvalue('field_listings'));
+  $value_array[]=$form_state->getValue('name');
+  $value_array[]=$form_state->getValue('mail');
+  foreach ($form_state->getValues() as $key => $value) {
+  // 
+    if($key!='name'&& $key!='mail' && $key!='langcode' && $key!='copy')
+    {
+
+        //@@check wethr it is a date field
+        if(is_object($form_state->getvalue($key)[0]['value'])){
+        $value_array[]=$form_state->getValue($key)[0]['value']->format("Y-m-d H:i:s", $settings = array());
+        }
+        //@@if the data is empty or null
+        else if($form_state->getValue($key)[0]['value']==NULL){
+          $value_array[]="not specified";
+        }
+        
+        //@@check for integer or text formats and @@check for checkboxes or select lists
+        else{
+          if(sizeof($form_state->getValue($key))==1){
+                $value_array[]=$form_state->getValue($key)[0]['value'];
+          }
+          else{
+            $checklist=" ";
+            foreach ($form_state->getvalue($key) as $key3 => $value3) 
+            {
+              //echo($value3['value']);echo "<br>";
+              // print_r($value3['value']);echo "<br";
+                $checklist.=($value3['value']).' ';
+            }
+             $value_array[]=$checklist;   
+            //echo $checklist;
+          }
+        // $value_array[]=$form_state->getValue($key)[0]['value'];
+        }
+    //echo $key;
+    }
+  }
+
+// $value_array[]=array($form_state->getValue('name'),$form_state->getValue('mail');
+ // echo "<br>";print_r($value_array);
+// print_r($form_state->getValues());
+  $id=($c['cd']);
+
+  $sql="SELECT * from sheetint where cid='".$form_to_link."'";
+  $result=db_query($sql);
+  while($data = $result->fetchObject()){
+    $sheet=$data->sheet_id;
+  }
+  
+  $service = new Google_Service_Sheets($id);
+  $spreadsheetId =$sheet;
+  $range = 'Sheet1!A1:E1';
+  //provide ur field values here in the format specified
+  $values = array(
+      $value_array
+  );
+  $body = new Google_Service_Sheets_ValueRange(array(
+    'values' => $values
+  ));
+  $params = array(
+    'valueInputOption' => 'RAW'
+  );
+  $result = $service->spreadsheets_values->append($spreadsheetId, $range, $body, $params); 
+}
+
+function get1($key, $default=NULL) {
+    return array_key_exists($key, $_GET) ? $_GET[$key] : $default;
+}
+
+
+
+function sheetint_uninstall(){
+   //define('CREDENTIALS_PATH', $_SERVER['DOCUMENT_ROOT'].'/sites/default/files/sheets.googleapis.com-php-formint.json');
+  \Drupal::service('config.factory')->getEditable('my_sheet_int_form.settings')->delete();
+  //unlink(CREDENTIALS_PATH);
+}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,21 @@
+<?php
+//
+namespace Drupal\jsonweb\Controller;
+//
+use Drupal\Core\Controller\ControllerBase;
+use Symfony\Component\HttpFoundation\JsonResponse;
+/**
+ * Class MyWebService.
+ */
+class jsonweb extends ControllerBase {
+  /**
+   * Multiply.
+   */
+  public function multiply() {
+    $request = \Drupal::request();
+    $output['a'] = $request->get('a');
+    $output['b'] = $request->get('b');
+    $output['result'] = $output['a'] * $output['b'];
+    return new JsonResponse($output);
+  }
+}

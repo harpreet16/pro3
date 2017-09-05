@@ -1,0 +1,7 @@
+jsonweb.multiply:
+  path: '/jsonweb/maths/multiply'
+  defaults:
+    _controller: '\Drupal\jsonweb\Controller\jsonweb::multiply'
+    _title: 'MyJsonWebService'
+  requirements:
+    _permission: 'access content'

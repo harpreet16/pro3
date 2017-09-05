@@ -29,17 +29,18 @@ else{
       // $form['elements']['contact']['#disabled'] = TRUE;
       $form['elements']['contact']['#type'] = "hidden";
       // dpm($form['#validate']);
-      $form['#validate'][3] = 'form_module_formValidate';
-      // array_splice($form['actions']['submit']['#submit'], 0, 0,array('form_module_submission_presave'));
+      // $form['#validate'][3] = 'form_module_formValidate';
+      array_splice($form['actions']['submit']['#submit'], 0, 0,array('form_module_submission_presave'));
 
       // $form['actions']['submit']['#submit'][] = 'form_module_submission_presave';
 }
-$form['actions']['submit']['#ajax'] = array(
-        'callback' => 'form_module_ajax',
-        'wrapper' => 'webform-submission-test-form-node-61-form',
-        'method' => 'replace',
-        'effect' =>'fade',
-        );
+// kint($form);
+// $form['actions']['submit']['#ajax'] = array(
+//         'callback' => 'form_module_ajax',
+//         'wrapper' => 'webform-submission-test-form-node-61-form',
+//         'method' => 'replace',
+//         'effect' =>'fade',
+//         );
 // kint($form);
 }
 }
@@ -71,8 +72,8 @@ function form_module_submission_presave(&$form, \Drupal\Core\Form\FormStateInter
   //  //$form_state->setRebuild();
  
   // // $form_state->setRebuild();
-  // $c=$form_state->getValue('email');
-  // print_r($c);
+  $c=$form_state->getValue('email');
+  print_r($c);
   // // $c['first']="myname";
    
   // $form_state->setValue('email','myname@gmail.com');

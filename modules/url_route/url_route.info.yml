@@ -1,0 +1,6 @@
+name: Url route Module
+description: An experimental module to build our first Drupal 8 module to pass parameters 
+package: Custom
+type: module
+version: 1.0
+core: 8.x

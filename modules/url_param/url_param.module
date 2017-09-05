@@ -1,0 +1,11 @@
+<?php
+
+function url_param_preprocess_node(&$variables){
+	$request = \Drupal::request();
+	$current_path = $request->getPathInfo();
+	$path_args = explode('/', $current_path);
+	$first_argument = $path_args[1];
+    $variables['path']=$first_argument;
+    $variables['args']=$path_args[2];
+}
+?>

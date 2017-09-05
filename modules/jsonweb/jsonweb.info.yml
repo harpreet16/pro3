@@ -1,0 +1,6 @@
+name: Web Service Module
+description: An experimental module to add json web services in drupal 8
+package: Custom
+type: module
+version: 1.0
+core: 8.x

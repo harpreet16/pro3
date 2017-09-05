@@ -1,4 +1,4 @@
-<?php
+  <?php
 /**
  * @file
  * Bootstrap sub-theme.
@@ -8,7 +8,7 @@
 function bootstrap_subtheme_theme_suggestions_node_alter(array &$suggestions, array $variables) {
 
   if ($node = \Drupal::routeMatch()->getParameter('node')) {
-   $variables['abc'] = '<p>This is Working</p>';
+  
    // kint($variables);
    $content_type = $node->bundle();
     // dpm($node->title->value);
@@ -23,6 +23,7 @@ function bootstrap_subtheme_theme_suggestions_node_alter(array &$suggestions, ar
 function bootstrap_subtheme_preprocess_html(&$variables) {
    // $variables['abc'] = 'hello';
 	// kint($variables);
+
   if ($node = \Drupal::request()->attributes->get('node')) {
   	// dsm($node->nid);
     $variables['attributes']['class'][] = 'page-node-' . $node->title->value;
@@ -36,10 +37,11 @@ function bootstrap_subtheme_preprocess_html(&$variables) {
  * drupal.stackexchange.com/questions/186246/how-to-print-core-block-or-views-block-in-node-html-twig-drupal-8
  */
 function bootstrap_subtheme_preprocess_node(&$variables) {
-
     # this creates a variable named 'similar_by_terms' that i can use in the twig template files.
     # this is the machine name shown at 'admin/structure/views'
    // kint($variables);
+    
+    $variables['abc'] = 'This is Working';
     $variables['similar_by_terms'] = views_embed_view('events');
     // Getting the node creation time stamp from the node object.
     $date = $variables['node']->getCreatedTime();
@@ -61,19 +63,20 @@ function bootstrap_subtheme_preprocess_node(&$variables) {
   //     //attach the library.
   //     $variables['#attached']['library'][] = 'bootstrap_subtheme/styling';
   //   }
-  // }
-
-    
+  // }    
 }
+
 function bootstrap_subtheme_preprocess_page(&$variables) {
-  // kint($variables);
-           $node = \Drupal::routeMatch()->getParameter('node');
+    $variables['route_name'] = \Drupal::routeMatch()->getRouteName();
+    // kint($variables['route_name']);
+    // kint($variables);
+    $node = \Drupal::routeMatch()->getParameter('node');
     if ($node) { // check we have a node object.
     if ($node->id() == 61) { // look for a specific node id.
-      //attach the library.
+    //attach the library.
       $variables['#attached']['library'][] = 'bootstrap_subtheme/styling';
       // kint($variables);
-    }
+     }
   }
 }
 

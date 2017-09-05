@@ -1,0 +1,15 @@
+form_in_cntr.content:
+  path: '/form_in_cntr'
+  defaults:
+    _controller: 'Drupal\form_in_cntr\Controller\MyExposedListBuilder::render'
+    _title: 'Form in Controller'
+  requirements:
+    _permission: 'access content'
+
+form_in_cntr.form:
+  path: '/form_mycustom'
+  defaults:
+    _form: 'Drupal\form_in_cntr\Form\MyEntityExposedFilters'
+    _title: 'Test form of form_in_cntr'
+  requirements:
+    _permission: 'administer site configuration'

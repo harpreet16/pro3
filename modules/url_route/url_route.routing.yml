@@ -1,0 +1,11 @@
+url_route.info:
+  path: '/content/{type}/{node}'
+  defaults:
+    _form: '\Drupal\url_route\Form\ContactUserForm'
+    _title: 'Leave a message here'
+  requirements:
+    _permission: 'access content'
+  options:
+    parameters:
+      node:
+        type: entity:node

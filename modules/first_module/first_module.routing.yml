@@ -14,3 +14,12 @@ first_module.form:
  requirements:
     _permission: 'administer site configuration'
 
+first_module.roles:
+  path: '/user/rolesdisplay'
+  defaults:
+    _title: 'Display user roles'
+    _controller: 'Drupal\first_module\Controller\FirstController::roles'
+  requirements:
+    _permission: 'administer site configuration'
+
+

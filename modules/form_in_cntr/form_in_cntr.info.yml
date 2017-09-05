@@ -1,0 +1,6 @@
+name: Form in controller Module
+description: An experimental module to render a form in controller
+package: Custom
+type: module
+version: 1.0
+core: 8.x
