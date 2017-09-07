@@ -1,0 +1,34 @@
+<?php
+function sheet_integration_install() {
+  $database = \Drupal::database();
+  // drupal_install_schema('book_detail');
+  }
+
+function sheet_integration_schema() {
+  $schema['sheet_integration'] = array(
+    'description' => 'Stores entries for forms.',
+    'fields' => array(
+      'cid' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'description' => 'Primary Key: Unique form ID.',
+      ),
+      'client' => array(
+        'type' => 'blob',
+        'description' => 'clientinformation.',
+      ),
+      'sheet_id' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'id of the sheet',
+      ),
+     
+     
+    ),
+  );
+
+  return $schema;
+}

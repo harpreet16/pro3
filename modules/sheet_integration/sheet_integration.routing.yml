@@ -1,0 +1,7 @@
+sheet_integration.form:
+ path: '/sheetintconfig.com'
+ defaults:
+   _title: 'Sheet data form'
+   _form: '\Drupal\sheet_integration\Form\SheetconfigForm'
+ requirements:
+    _permission: 'administer site configuration'

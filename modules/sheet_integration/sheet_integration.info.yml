@@ -1,0 +1,6 @@
+name: Form integration Module
+description: An experimental module that integrates google spreadsheet to drupal forms
+package: Custom
+type: module
+version: 1.0
+core: 8.x
