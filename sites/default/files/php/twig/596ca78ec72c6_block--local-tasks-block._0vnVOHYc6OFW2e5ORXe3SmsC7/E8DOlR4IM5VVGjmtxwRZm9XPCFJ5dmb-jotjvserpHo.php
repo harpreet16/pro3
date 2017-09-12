@@ -1,14 +1,14 @@
 <?php
 
-/* themes/bootstrap/templates/block/block--local-tasks-block.html.twig */
-class __TwigTemplate_397b12ec425533db4b841ed878e5e52108555e12da6ff9e013ace012cc792657 extends Twig_Template
+/* core/themes/classy/templates/block/block--local-tasks-block.html.twig */
+class __TwigTemplate_b4f0d4854b576c0a12580a31e1bd56ba733bd46516f693b0b7be5e6d3b19fadd extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
     {
         parent::__construct($env);
 
         // line 1
-        $this->parent = $this->loadTemplate("block--bare.html.twig", "themes/bootstrap/templates/block/block--local-tasks-block.html.twig", 1);
+        $this->parent = $this->loadTemplate("block.html.twig", "core/themes/classy/templates/block/block--local-tasks-block.html.twig", 1);
         $this->blocks = array(
             'content' => array($this, 'block_content'),
         );
@@ -16,13 +16,13 @@ class __TwigTemplate_397b12ec425533db4b841ed878e5e52108555e12da6ff9e013ace012cc7
 
     protected function doGetParent(array $context)
     {
-        return "block--bare.html.twig";
+        return "block.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $tags = array("if" => 11);
-        $filters = array("t" => 12);
+        $tags = array("if" => 9);
+        $filters = array("t" => 10);
         $functions = array();
 
         try {
@@ -48,18 +48,18 @@ class __TwigTemplate_397b12ec425533db4b841ed878e5e52108555e12da6ff9e013ace012cc7
         $this->parent->display($context, array_merge($this->blocks, $blocks));
     }
 
-    // line 10
+    // line 8
     public function block_content($context, array $blocks = array())
     {
-        // line 11
+        // line 9
         echo "  ";
         if ((isset($context["content"]) ? $context["content"] : null)) {
-            // line 12
+            // line 10
             echo "    <nav class=\"tabs\" role=\"navigation\" aria-label=\"";
             echo $this->env->getExtension('sandbox')->ensureToStringAllowed($this->env->getExtension('drupal_core')->renderVar(t("Tabs")));
             echo "\">
       ";
-            // line 13
+            // line 11
             echo $this->env->getExtension('sandbox')->ensureToStringAllowed($this->env->getExtension('drupal_core')->escapeFilter($this->env, (isset($context["content"]) ? $context["content"] : null), "html", null, true));
             echo "
     </nav>
@@ -69,7 +69,7 @@ class __TwigTemplate_397b12ec425533db4b841ed878e5e52108555e12da6ff9e013ace012cc7
 
     public function getTemplateName()
     {
-        return "themes/bootstrap/templates/block/block--local-tasks-block.html.twig";
+        return "core/themes/classy/templates/block/block--local-tasks-block.html.twig";
     }
 
     public function isTraitable()
@@ -79,18 +79,16 @@ class __TwigTemplate_397b12ec425533db4b841ed878e5e52108555e12da6ff9e013ace012cc7
 
     public function getDebugInfo()
     {
-        return array (  63 => 13,  58 => 12,  55 => 11,  52 => 10,  11 => 1,);
+        return array (  63 => 11,  58 => 10,  55 => 9,  52 => 8,  11 => 1,);
     }
 
     public function getSource()
     {
-        return "{% extends \"block--bare.html.twig\" %}
+        return "{% extends \"block.html.twig\" %}
 {#
 /**
  * @file
  * Theme override for tabs.
- *
- * @ingroup templates
  */
 #}
 {% block content %}

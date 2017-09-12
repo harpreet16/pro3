@@ -1,7 +1,7 @@
 <?php
 
-/* themes/bootstrap/templates/menu/menu-local-tasks.html.twig */
-class __TwigTemplate_67f5939e062c8a3b3232fdf1555bf54ec8a174e9a4ebb6c8a140ea11de6e4400 extends Twig_Template
+/* core/themes/seven/templates/menu-local-tasks.html.twig */
+class __TwigTemplate_b89a75829312b4a1c41c463bd8ff8c7bff8d70c54cce26e40f26ce79dfbdd6b2 extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
     {
@@ -15,8 +15,8 @@ class __TwigTemplate_67f5939e062c8a3b3232fdf1555bf54ec8a174e9a4ebb6c8a140ea11de6
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $tags = array("if" => 18);
-        $filters = array("t" => 19);
+        $tags = array("if" => 16);
+        $filters = array("t" => 17);
         $functions = array();
 
         try {
@@ -39,35 +39,43 @@ class __TwigTemplate_67f5939e062c8a3b3232fdf1555bf54ec8a174e9a4ebb6c8a140ea11de6
             throw $e;
         }
 
-        // line 18
+        // line 16
         if ((isset($context["primary"]) ? $context["primary"] : null)) {
-            // line 19
-            echo "  <h2 class=\"visually-hidden\">";
+            // line 17
+            echo "  <h2 id=\"primary-tabs-title\" class=\"visually-hidden\">";
             echo $this->env->getExtension('sandbox')->ensureToStringAllowed($this->env->getExtension('drupal_core')->renderVar(t("Primary tabs")));
             echo "</h2>
-  <ul class=\"tabs--primary nav nav-tabs\">";
+  <nav role=\"navigation\" class=\"is-horizontal is-collapsible\" aria-labelledby=\"primary-tabs-title\" data-drupal-nav-tabs>
+    <button class=\"reset-appearance tabs__tab tabs__trigger\" aria-label=\"";
+            // line 19
+            echo $this->env->getExtension('sandbox')->ensureToStringAllowed($this->env->getExtension('drupal_core')->renderVar(t("Primary tabs display toggle")));
+            echo "\" data-drupal-nav-tabs-trigger>&bull;&bull;&bull;</button>
+    <ul class=\"tabs primary clearfix\" data-drupal-nav-tabs-target>";
             // line 20
             echo $this->env->getExtension('sandbox')->ensureToStringAllowed($this->env->getExtension('drupal_core')->escapeFilter($this->env, (isset($context["primary"]) ? $context["primary"] : null), "html", null, true));
             echo "</ul>
+  </nav>
 ";
         }
-        // line 22
+        // line 23
         if ((isset($context["secondary"]) ? $context["secondary"] : null)) {
-            // line 23
-            echo "  <h2 class=\"visually-hidden\">";
+            // line 24
+            echo "  <h2 id=\"secondary-tabs-title\" class=\"visually-hidden\">";
             echo $this->env->getExtension('sandbox')->ensureToStringAllowed($this->env->getExtension('drupal_core')->renderVar(t("Secondary tabs")));
             echo "</h2>
-  <ul class=\"tabs--secondary pagination pagination-sm\">";
-            // line 24
+  <nav role=\"navigation\" class=\"is-horizontal\" aria-labelledby=\"secondary-tabs-title\" data-drupal-nav-tabs>
+    <ul class=\"tabs secondary clearfix\">";
+            // line 26
             echo $this->env->getExtension('sandbox')->ensureToStringAllowed($this->env->getExtension('drupal_core')->escapeFilter($this->env, (isset($context["secondary"]) ? $context["secondary"] : null), "html", null, true));
             echo "</ul>
+  </nav>
 ";
         }
     }
 
     public function getTemplateName()
     {
-        return "themes/bootstrap/templates/menu/menu-local-tasks.html.twig";
+        return "core/themes/seven/templates/menu-local-tasks.html.twig";
     }
 
     public function isTraitable()
@@ -77,7 +85,7 @@ class __TwigTemplate_67f5939e062c8a3b3232fdf1555bf54ec8a174e9a4ebb6c8a140ea11de6
 
     public function getDebugInfo()
     {
-        return array (  62 => 24,  57 => 23,  55 => 22,  50 => 20,  45 => 19,  43 => 18,);
+        return array (  69 => 26,  63 => 24,  61 => 23,  55 => 20,  51 => 19,  45 => 17,  43 => 16,);
     }
 
     public function getSource()
@@ -85,7 +93,7 @@ class __TwigTemplate_67f5939e062c8a3b3232fdf1555bf54ec8a174e9a4ebb6c8a140ea11de6
         return "{#
 /**
  * @file
- * Default theme implementation to display primary and secondary local tasks.
+ * Seven theme implementation to display primary and secondary local tasks.
  *
  * Available variables:
  * - primary: HTML list items representing primary tasks.
@@ -94,18 +102,21 @@ class __TwigTemplate_67f5939e062c8a3b3232fdf1555bf54ec8a174e9a4ebb6c8a140ea11de6
  * Each item in these variables (primary and secondary) can be individually
  * themed in menu-local-task.html.twig.
  *
- * @ingroup templates
- *
- * @see template_preprocess_menu_local_tasks()
+ * @ingroup themeable
  */
 #}
 {% if primary %}
-  <h2 class=\"visually-hidden\">{{ 'Primary tabs'|t }}</h2>
-  <ul class=\"tabs--primary nav nav-tabs\">{{ primary }}</ul>
+  <h2 id=\"primary-tabs-title\" class=\"visually-hidden\">{{ 'Primary tabs'|t }}</h2>
+  <nav role=\"navigation\" class=\"is-horizontal is-collapsible\" aria-labelledby=\"primary-tabs-title\" data-drupal-nav-tabs>
+    <button class=\"reset-appearance tabs__tab tabs__trigger\" aria-label=\"{{ 'Primary tabs display toggle'|t }}\" data-drupal-nav-tabs-trigger>&bull;&bull;&bull;</button>
+    <ul class=\"tabs primary clearfix\" data-drupal-nav-tabs-target>{{ primary }}</ul>
+  </nav>
 {% endif %}
 {% if secondary %}
-  <h2 class=\"visually-hidden\">{{ 'Secondary tabs'|t }}</h2>
-  <ul class=\"tabs--secondary pagination pagination-sm\">{{ secondary }}</ul>
+  <h2 id=\"secondary-tabs-title\" class=\"visually-hidden\">{{ 'Secondary tabs'|t }}</h2>
+  <nav role=\"navigation\" class=\"is-horizontal\" aria-labelledby=\"secondary-tabs-title\" data-drupal-nav-tabs>
+    <ul class=\"tabs secondary clearfix\">{{ secondary }}</ul>
+  </nav>
 {% endif %}
 ";
     }

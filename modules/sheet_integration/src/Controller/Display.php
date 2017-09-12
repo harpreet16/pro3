@@ -24,6 +24,7 @@ class Display extends ControllerBase {
    *   Return Table format data.
    */
   public function showdata() {
+    
 
 // you can write your own query to fetch the data I have given my example.
 
@@ -33,11 +34,14 @@ class Display extends ControllerBase {
 // Create the row element.
     $rows = array();
     foreach ($result as $row => $content) {
+      $delete = Url::fromUserInput('/admin/config/sheetintegration.com/delete/'.$content->cid);
+      $edit   = Url::fromUserInput('/admin/config/sheetintegration.com/edit');
       $rows[] = array(
-        'data' => array($content->cid, $content->sheet_id));
+        'data' => array($content->cid, $content->sheet_id,
+                 \Drupal::l('Edit', $edit),\Drupal::l('Delete', $delete),));
     }
 // Create the header.
-    $header = array('Contact_Form_Id', 'Google_Sheet_Id');
+    $header = array('Contact_Form_Id', 'Google_Sheet_Id' , 'Edit','Delete');
     $output = array(
       '#theme' => 'table',    // Here you can write #type also instead of #theme.
       '#header' => $header,

@@ -1,0 +1,5 @@
+sheet_integration.settings:
+  title: Sheet Integration
+  description: 'Integrate Google spreadsheets to drupal contact forms'
+  parent: system.admin_config
+  route_name: sheet_integration.token

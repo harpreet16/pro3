@@ -11,13 +11,7 @@ sheet_integration.tab_2:
   weight: 20
 
 sheet_integration.tab_3:
-  route_name: sheet_integration.edit
-  title: Edit
-  base_route: sheet_integration.token
-  weight: 30
-
-sheet_integration.tab_4:
   route_name: sheet_integration.display
   title: Dashboard
   base_route: sheet_integration.token
-  weight: 40
+  weight: 30

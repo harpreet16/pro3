@@ -19,17 +19,17 @@ protected function getEditableConfigNames() {
 **/
 public function buildForm(array $form, FormStateInterface $form_state) {
   if(!file_exists(CREDENTIALS_PATH)){
-    drupal_set_message(t('You do not have access to spreadsheet services.Visit /generatetoken.com and Generate token'));
+    drupal_set_message(t('You do not have access to spreadsheet services.Visit /sheetintegration.com and Generate token'));
     //dpm(CREDENTIALS_PATH);
   }
   else{
     $form['sheet_id'] = array(
       '#type' => 'textfield',
-      '#title' => $this->t('Sheet Id'),
+      '#title' => $this->t('Google Spreadsheet Id'),
     ); 
     $form['cid'] = array(
       '#type' => 'textfield',
-      '#title' => $this->t('Contact_form_id'),
+      '#title' => $this->t('Drupal Contact Form Id'),
     ); 
     $form['client']= array(
       '#type' => 'hidden',
@@ -46,11 +46,11 @@ public function buildForm(array $form, FormStateInterface $form_state) {
  * Implements submitForm().
 **/
 public function submitForm(array &$form, FormStateInterface $form_state ) { 
-$sql1="SELECT * from sheet_integration where cid='".$form_state->getValue('cid')."'";
+$sql1="SELECT * from sheet_integration where cid='".$form_state->getValue('cid')."' or sheet_id='".$form_state->getValue('sheet_id')."'";
 $result1=db_query($sql1);
 $result1->allowRowCount = TRUE;
 $num_of_results = $result1->rowCount();
- if($num_of_results == 0){
+ if($num_of_results == 0 && $form_state->getValue('sheet_id')!=NULL && $form_state->getValue('cid')!=NULL){
      db_insert('sheet_integration')
     ->fields(array(
     'sheet_id' => $form_state->getValue('sheet_id'),
@@ -66,6 +66,7 @@ $num_of_results = $result1->rowCount();
   ->condition('cid', $form_state->getValue('cid'), '=')
   ->execute();
   }
+  $form_state->setRedirect('sheet_integration.display');
 }  
 
 }

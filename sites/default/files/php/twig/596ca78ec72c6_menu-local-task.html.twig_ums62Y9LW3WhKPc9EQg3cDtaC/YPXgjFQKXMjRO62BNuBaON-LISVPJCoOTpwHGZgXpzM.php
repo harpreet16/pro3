@@ -1,7 +1,7 @@
 <?php
 
-/* themes/bootstrap/templates/menu/menu-local-task.html.twig */
-class __TwigTemplate_3392866f156c8decf83f3f9c20fe11f7de16d2e5c92927b22f5fd83d886d8903 extends Twig_Template
+/* core/themes/classy/templates/navigation/menu-local-task.html.twig */
+class __TwigTemplate_6c31193c665b13d9156a744e91e9872dcb0543c9acdc1450e0397da212e2b6ad extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
     {
@@ -15,13 +15,13 @@ class __TwigTemplate_3392866f156c8decf83f3f9c20fe11f7de16d2e5c92927b22f5fd83d886
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $tags = array("set" => 19);
+        $tags = array();
         $filters = array();
         $functions = array();
 
         try {
             $this->env->getExtension('sandbox')->checkSecurity(
-                array('set'),
+                array(),
                 array(),
                 array()
             );
@@ -39,12 +39,9 @@ class __TwigTemplate_3392866f156c8decf83f3f9c20fe11f7de16d2e5c92927b22f5fd83d886
             throw $e;
         }
 
-        // line 19
-        $context["classes"] = array(0 => ((        // line 20
-(isset($context["is_active"]) ? $context["is_active"] : null)) ? ("active") : ("")));
-        // line 22
+        // line 17
         echo "<li";
-        echo $this->env->getExtension('sandbox')->ensureToStringAllowed($this->env->getExtension('drupal_core')->escapeFilter($this->env, $this->getAttribute((isset($context["attributes"]) ? $context["attributes"] : null), "addClass", array(0 => (isset($context["classes"]) ? $context["classes"] : null)), "method"), "html", null, true));
+        echo $this->env->getExtension('sandbox')->ensureToStringAllowed($this->env->getExtension('drupal_core')->escapeFilter($this->env, $this->getAttribute((isset($context["attributes"]) ? $context["attributes"] : null), "addClass", array(0 => (((isset($context["is_active"]) ? $context["is_active"] : null)) ? ("is-active") : (""))), "method"), "html", null, true));
         echo ">";
         echo $this->env->getExtension('sandbox')->ensureToStringAllowed($this->env->getExtension('drupal_core')->escapeFilter($this->env, (isset($context["link"]) ? $context["link"] : null), "html", null, true));
         echo "</li>
@@ -53,7 +50,7 @@ class __TwigTemplate_3392866f156c8decf83f3f9c20fe11f7de16d2e5c92927b22f5fd83d886
 
     public function getTemplateName()
     {
-        return "themes/bootstrap/templates/menu/menu-local-task.html.twig";
+        return "core/themes/classy/templates/navigation/menu-local-task.html.twig";
     }
 
     public function isTraitable()
@@ -63,7 +60,7 @@ class __TwigTemplate_3392866f156c8decf83f3f9c20fe11f7de16d2e5c92927b22f5fd83d886
 
     public function getDebugInfo()
     {
-        return array (  46 => 22,  44 => 20,  43 => 19,);
+        return array (  43 => 17,);
     }
 
     public function getSource()
@@ -81,15 +78,10 @@ class __TwigTemplate_3392866f156c8decf83f3f9c20fe11f7de16d2e5c92927b22f5fd83d886
  * Note: This template renders the content for each task item in
  * menu-local-tasks.html.twig.
  *
- * @ingroup templates
- *
  * @see template_preprocess_menu_local_task()
  */
 #}
-{% set classes = [
-  is_active ? 'active',
-] %}
-<li{{ attributes.addClass(classes) }}>{{ link }}</li>
+<li{{ attributes.addClass(is_active ? 'is-active') }}>{{ link }}</li>
 ";
     }
 }
