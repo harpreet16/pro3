@@ -1,7 +1,31 @@
+sheet_integration.token:
+  path: '/generatetoken.com'
+  defaults:
+    _title: 'Generate token'
+    _form: '\Drupal\sheet_integration\Form\accesstoken'
+  requirements:
+    _permission: 'administer site configuration'
+
 sheet_integration.form:
- path: '/sheetintconfig.com'
+ path: '/generatetoken.com/add'
  defaults:
    _title: 'Sheet data form'
    _form: '\Drupal\sheet_integration\Form\SheetconfigForm'
  requirements:
     _permission: 'administer site configuration'
+
+sheet_integration.edit:
+ path: '/generatetoken.com/edit'
+ defaults:
+   _title: 'Sheet data form'
+   _form: '\Drupal\sheet_integration\Form\SheetconfigForm'
+ requirements:
+    _permission: 'administer site configuration'
+
+sheet_integration.display:
+  path: '/generatetoken.com/display'
+  defaults:
+    _controller: '\Drupal\sheet_integration\Controller\Display::showdata'
+    _title: 'Dashboard'
+  requirements:
+    _permission: 'access content'
