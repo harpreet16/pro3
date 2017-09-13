@@ -25,10 +25,10 @@ class Deleteentry extends ConfirmFormBase {
   public function getQuestion() { 
     return t('Do you want to delete %cid?', array('%cid' => $this->cid));
   }
- public function getCancelUrl() {
+  public function getCancelUrl() {
     return new Url('sheet_integration.display');
-}
-public function getDescription() {
+  }
+  public function getDescription() {
     return t('Only do this if you are sure!');
   }
   /**
@@ -60,11 +60,11 @@ public function getDescription() {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-       $query = \Drupal::database();
-       $query->delete('sheet_integration')
-                   ->condition('cid',$this->id)
-                  ->execute();
-             drupal_set_message("succesfully deleted");
-            $form_state->setRedirect('sheet_integration.display');
+   $query = \Drupal::database();
+   $query->delete('sheet_integration')
+               ->condition('cid',$this->id)
+              ->execute();
+   drupal_set_message("succesfully deleted");
+   $form_state->setRedirect('sheet_integration.display');
   }
 }

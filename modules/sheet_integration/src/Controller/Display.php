@@ -37,8 +37,7 @@ class Display extends ControllerBase {
       $delete = Url::fromUserInput('/admin/config/sheetintegration.com/delete/'.$content->cid);
       $edit   = Url::fromUserInput('/admin/config/sheetintegration.com/edit');
       $rows[] = array(
-        'data' => array($content->cid, $content->sheet_id,
-                 \Drupal::l('Edit', $edit),\Drupal::l('Delete', $delete),));
+        'data' => array($content->cid, $content->sheet_id,\Drupal::l('Edit', $edit),\Drupal::l('Delete', $delete),));
     }
 // Create the header.
     $header = array('Contact_Form_Id', 'Google_Sheet_Id' , 'Edit','Delete');

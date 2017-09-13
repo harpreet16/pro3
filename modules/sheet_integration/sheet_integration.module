@@ -5,6 +5,7 @@ require_once __DIR__ . '/vendor/autoload.php';
  * Implements hook_form_alter().
 */
 function sheet_integration_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+ // kint($form_id);
   $sql1="SELECT * from sheet_integration";
   $result1=db_query($sql1);
   while($data1 = $result1->fetchObject()){
@@ -76,7 +77,7 @@ function sheet_integration_form_submit_handler(&$form, \Drupal\Core\Form\FormSta
   }
   /**
   * connects form to spreadsheet for entry of data
-  **/  
+  */  
   $service = new Google_Service_Sheets($id);
   $spreadsheetId =$sheet;
   $range = 'Sheet1!A1:E1';
