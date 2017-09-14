@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\sheet_integration\Form.
+ */
 namespace Drupal\sheet_integration\Form;
 
 use Drupal\Core\Form\ConfigFormBase;
@@ -77,7 +81,7 @@ $num_of_results = $result1->rowCount();
       ->execute(); 
       }
       else if($values->cid!=$form['cid']['#options'][$form_state->getValue('cid')]){
-         db_update('sheet_integration')
+        db_update('sheet_integration')
       ->fields([
         'cid' => $form['cid']['#options'][$form_state->getValue('cid')],
       ])
@@ -85,7 +89,7 @@ $num_of_results = $result1->rowCount();
       ->execute(); 
       }
       else if($values->cid==$form['cid']['#options'][$form_state->getValue('cid')] || $values->sheet_id==$form_state->getValue('sheet_id')){
-         drupal_set_message(t('Already exists so cannot save these values'));
+        drupal_set_message(t('Already exist. Cannot reuse an existing Id.'));
       }       
    }
   }

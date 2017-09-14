@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\sheet_integration\Form.
+ */
 namespace Drupal\sheet_integration\Form;
 
 use Drupal\Core\Form\ConfigFormBase;
@@ -11,7 +15,6 @@ $path = $module_handler->getModule('sheet_integration')->getPath();
 define('APPLICATION_NAME', 'Google Sheets API PHP Quickstart');
 define('CREDENTIALS_PATH', \Drupal::service('file_system')->realpath(file_default_scheme() . "://").'/sheets.googleapis.com-php-formint.json');
 define('CLIENT_SECRET_PATH',  $_SERVER['DOCUMENT_ROOT'].'/'.$path.'/client_secret.json');
-//dpm(CREDENTIALS_PATH);
 class accesstoken extends ConfigFormBase {
 public function getFormId() {
   return 'access_token_form';
@@ -64,10 +67,8 @@ function getClient() {
 }
 $client=getClient();
 $client=getClient();
-//dpm($client);
 $config = \Drupal::service('config.factory')->getEditable('access_token_form.settings');
 $config->set('client', serialize($client))->save();
-
   $form['submit'] = array(
   '#type' => 'submit',
   '#value' => 'Generate Token',
@@ -93,8 +94,8 @@ require_once $_SERVER['DOCUMENT_ROOT']. '/modules/sheet_integration/vendor/autol
     $client->setApprovalPrompt('force');
       //Request authorization from the user.
       $authUrl = $client->createAuthUrl();
-         $response= new RedirectResponse($authUrl);
-         $response->send();
+       $response= new RedirectResponse($authUrl);
+       $response->send();
        }
 }
 
