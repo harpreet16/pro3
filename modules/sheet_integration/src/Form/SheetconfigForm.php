@@ -78,7 +78,8 @@ $num_of_results = $result1->rowCount();
         'sheet_id' => $form_state->getValue('sheet_id'),
       ])
       ->condition('cid', ($form['cid']['#options'][$form_state->getValue('cid')]), '=')
-      ->execute(); 
+      ->execute();
+      drupal_set_message(t('New values have been saved.')); 
       }
       else if($values->cid!=$form['cid']['#options'][$form_state->getValue('cid')]){
         db_update('sheet_integration')
@@ -87,6 +88,7 @@ $num_of_results = $result1->rowCount();
       ])
       ->condition('sheet_id', $form_state->getValue('sheet_id'), '=')
       ->execute(); 
+      drupal_set_message(t('New values have been saved.'));
       }
       else if($values->cid==$form['cid']['#options'][$form_state->getValue('cid')] || $values->sheet_id==$form_state->getValue('sheet_id')){
         drupal_set_message(t('Already exist. Cannot reuse an existing Id.'));
