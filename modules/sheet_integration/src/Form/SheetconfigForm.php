@@ -34,14 +34,14 @@ public function buildForm(array $form, FormStateInterface $form_state) {
         $str_new=$str_new.'_form';
         $formarray[]=$str_new;       
     }
-    $form['sheet_id'] = array(
-      '#type' => 'textfield',
-      '#title' => $this->t('Google Spreadsheet Id'),
-    ); 
     $form['cid'] = array(
       '#type' => 'select',
       '#options' => $formarray,
       '#title' => $this->t('Drupal Contact Form Id'),
+    ); 
+    $form['sheet_id'] = array(
+      '#type' => 'textfield',
+      '#title' => $this->t('Google Spreadsheet Id'),
     ); 
     $form['client']= array(
       '#type' => 'hidden',
@@ -69,6 +69,7 @@ $num_of_results = $result1->rowCount();
     'cid' => ($form['cid']['#options'][$form_state->getValue('cid')]),
     'client' => \Drupal::config('access_token_form.settings')->get('client'),          
   ))->execute();
+    drupal_set_message(t('New values have been saved.'));
   }
   else if($num_of_results == 1 && $form_state->getValue('sheet_id')!=NULL && $form_state->getValue('cid')!=NULL){
     while ($values = $result1->fetchObject()) {
@@ -79,7 +80,7 @@ $num_of_results = $result1->rowCount();
       ])
       ->condition('cid', ($form['cid']['#options'][$form_state->getValue('cid')]), '=')
       ->execute();
-      drupal_set_message(t('New values have been saved.')); 
+      drupal_set_message(t('Sheet_Id for '.$form['cid']['#options'][$form_state->getValue('cid')].' has been updated' )); 
       }
       else if($values->cid!=$form['cid']['#options'][$form_state->getValue('cid')]){
         db_update('sheet_integration')
@@ -88,13 +89,15 @@ $num_of_results = $result1->rowCount();
       ])
       ->condition('sheet_id', $form_state->getValue('sheet_id'), '=')
       ->execute(); 
-      drupal_set_message(t('New values have been saved.'));
+      drupal_set_message(t('Contact form Id for '.$form_state->getValue('sheet_id').' has been updated'));
       }
       else if($values->cid==$form['cid']['#options'][$form_state->getValue('cid')] || $values->sheet_id==$form_state->getValue('sheet_id')){
         drupal_set_message(t('Already exist. Cannot reuse an existing Id.'));
       }       
    }
   }
+  else
+    drupal_set_message(t('Already exist. Cannot reuse an existing Id.'));
   $form_state->setRedirect('sheet_integration.display');
 }  
 
