@@ -59,7 +59,8 @@ function getClient() {
       mkdir(dirname($credentialsPath), 0777, true);
     }
     file_put_contents($credentialsPath, json_encode($accessToken));
-    printf("Credentials saved to %s\n", $credentialsPath);       
+    drupal_set_message(t('Your credentials have been saved to '.$credentialsPath));
+    //printf("Credentials saved to %s\n", $credentialsPath);       
   }
   $client->setAccessToken($accessToken);
   return $client;

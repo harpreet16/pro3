@@ -98,7 +98,7 @@ $num_of_results = $result1->rowCount();
   }
   else
     drupal_set_message(t('Already exist. Cannot reuse an existing Id.'));
-  $form_state->setRedirect('sheet_integration.display');
+    $form_state->setRedirect('sheet_integration.display');
 }  
 
 }

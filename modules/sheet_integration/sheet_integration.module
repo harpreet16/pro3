@@ -58,10 +58,10 @@ function sheet_integration_form_submit_handler(&$form, \Drupal\Core\Form\FormSta
           }
           else{
             //@@check for multiple values
-            $checklist=" ";
+            $checklist="|  ";
             foreach ($form_state->getvalue($key) as $key3 => $value3) 
             {
-                $checklist.=($value3['value']).' ';
+                $checklist.=($value3['value']).'  |  ';
             }
              $value_array[]=$checklist;   
           }
